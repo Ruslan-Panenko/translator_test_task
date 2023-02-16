@@ -10,7 +10,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import HttpResponse, HttpResponseForbidden
 
-firebase = credentials.Certificate(settings.FIREBASE_AUTH)
+from config import system_config
+
+
+firebase = credentials.Certificate(system_config.firebase_config)
 firebase_app = firebase_admin.initialize_app(firebase)
 db = firestore.client()
 
