@@ -72,8 +72,6 @@ class TranslationDetailAPIView(APIView):
         doc = doc_ref.get()
         if doc.exists:
             data = doc.to_dict()
-            if data['from_user'] != user['email']:
-                return HttpResponseForbidden('Forbidden')
             data['id'] = doc.id
             return Response(data, status=status.HTTP_200_OK)
         return HttpResponse('Not Found', status=404)
