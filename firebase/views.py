@@ -12,7 +12,7 @@ from django.http import HttpResponse, HttpResponseForbidden
 
 from config import system_config
 
-
+print(system_config.firebase_config)
 firebase = credentials.Certificate(system_config.firebase_config)
 firebase_app = firebase_admin.initialize_app(firebase)
 db = firestore.client()
