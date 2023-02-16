@@ -21,6 +21,6 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('translations/', TranslationsListAPIView.as_view()),
+    path('translations/', TranslationsListAPIView.as_view(), name='translations_list'),
     path('translation/<str:pk>', TranslationDetailAPIView.as_view()),
 ]
