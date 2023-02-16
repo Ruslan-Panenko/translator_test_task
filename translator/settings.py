@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'firebase.apps.FirebaseConfig',
     'rest_framework',
     'drf_yasg',
+    "corsheaders",
     'translator'
 ]
 
@@ -60,6 +61,7 @@ FIREBASE_AUTH = BASE_DIR / 'credo.json'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
@@ -140,3 +142,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / 'static/'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+CORS_ALLOW_ALL_ORIGINS = True

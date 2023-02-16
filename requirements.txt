@@ -9,6 +9,7 @@ coreschema==0.0.4
 cryptography==39.0.1
 Deprecated==1.2.13
 Django==4.1.7
+django-cors-headers==3.13.0
 djangorestframework==3.14.0
 drf-yasg==1.21.5
 firebase-admin==6.1.0
