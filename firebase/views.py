@@ -29,6 +29,7 @@ def verify(request):
 class TranslationsListAPIView(APIView):
 
     def get(self, request):
+
         if not verify(request):
             return HttpResponseForbidden('Not valid token')
         users_ref = db.collection(u'translations')
