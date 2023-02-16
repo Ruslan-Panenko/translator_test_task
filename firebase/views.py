@@ -52,6 +52,8 @@ class TranslationsListAPIView(APIView):
     def post(self, request):
         user = verify(request)
         if not user: return HttpResponseForbidden('Not valid token')
+        if not request.data['input_text'] or not request.data['output_text']:
+            return Response({'Error': 'Fild required'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         input_text = request.data['input_text']
         output_text = request.data['output_text']
         new_object = db.collection(u'translations').document(str(uuid.uuid4()))
