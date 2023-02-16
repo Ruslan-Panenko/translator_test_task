@@ -89,9 +89,9 @@ class TranslationDetailAPIView(APIView):
     def put(self, request, pk):
         user = verify(request)
         if not user: return HttpResponseForbidden('Not valid token')
-
+        if not request.data['input_text'] or not request.data['output_text']:
+            return Response({'Error': 'Fild required'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         doc_ref = db.collection(u'translations').document(pk)
-
         doc = doc_ref.get()
         if doc.exists:
             data = doc.to_dict()
