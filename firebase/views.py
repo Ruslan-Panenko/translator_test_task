@@ -19,7 +19,10 @@ def verify(request):
     header = request.META.get('HTTP_AUTHORIZATION')
     if not header: return None
     token = header.replace('Bearer ', '')
-    decode_token = auth.verify_id_token(token)
+    try:
+        decode_token = auth.verify_id_token(token)
+    except:
+        return None
     return decode_token
 
 
